@@ -21,3 +21,15 @@ export function homeFloorJsonHandle (data) {
   })
   return f
 }
+
+export function compare (property, sort) {
+  return function (a, b) {
+    var value1 = a[property]
+    var value2 = b[property]
+    if (sort === 'desc') {
+      return value1 - value2
+    } else {
+      return value2 - value1
+    }
+  }
+}

@@ -113,7 +113,7 @@
                   <div class="red-btn">立即购买</div>
                 </div>
                 <div class="right">
-                  <img  v-lazy="imgHandle(items.img, '@_@w@_@200@_@h@_@200')" />
+                  <img v-lazy="imgHandle(items.img, '@_@w@_@200@_@h@_@200')" />
                 </div>
               </div>
             </a>

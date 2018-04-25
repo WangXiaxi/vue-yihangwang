@@ -77,6 +77,10 @@ export default {
     *
       line-height: 1.7 !important
       font-size: 16px !important
-      strong
-        font-weight: 500
+      word-wrap:break-word
+      word-break:break-all
+    strong
+      font-weight: 500
+    img
+      width: 100% !important
 </style>

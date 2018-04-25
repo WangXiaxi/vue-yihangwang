@@ -6,23 +6,15 @@
         <div class="go-back" @click="goBack">返回</div>
         <div class="input-group">
           <input class="search" v-model="search" placeholder="请输入搜索商品关键词" ref="inputSearch">
-          <div class="btn" @click="goSearch">
+          <div class="btn" @click="goSearch()">
             搜索
           </div>
         </div>
       </div>
-      <div class="history-list">
+      <div class="history-list" v-if="historySearch.length > 0">
         <h3>最近查询</h3>
         <ul>
-          <li>楼外楼</li>
-          <li>楼外楼</li>
-          <li>楼外楼</li>
-          <li>楼外楼</li>
-          <li>楼外楼</li>
-          <li>楼外楼</li>
-          <li>楼外楼</li>
-          <li>楼外楼</li>
-          <li>楼外楼</li>
+          <li v-for="(item, index) in historySearch" :key="index" @click="goSearch(item.word)">{{item.word}}</li>
         </ul>
       </div>
     </div>
@@ -30,20 +22,57 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { compare } from 'common/js/datahandle'
 export default {
   props: {
   },
   data () {
     return {
-      search: ''
+      search: '',
+      historySearch: []
+    }
+  },
+  created () {
+    let curHs = localStorage.getItem('locatSearchObj')
+    if (curHs) {
+      this.historySearch = JSON.parse(curHs).sort(compare('num'))
     }
   },
   methods: {
     goBack () {
       this.$router.go(-1)
     },
-    goSearch () {
+    goSearch (word) {
+      if (word) {
+        this.search = word
+      }
+      this.savelocStr()
       this.$router.push({path: '/site/index/search-list', query: {word: this.search}})
+    },
+    savelocStr () {
+      let curSearch = this.search
+      if (curSearch) { // 判断 search 存在在进行存储
+        let curLocalSearch = localStorage.getItem('locatSearchObj')
+        if (curLocalSearch) {
+          let curSearchArr = JSON.parse(curLocalSearch)
+          let ifExist = false
+          for (let k in curSearchArr) {
+            if (curSearchArr[k].word === curSearch) {
+              curSearchArr[k].num = curSearchArr[k].num + 1
+              ifExist = true
+              break
+            }
+          }
+          if (!ifExist) {
+            curSearchArr.push({id: curSearchArr.length, word: curSearch, num: 1})
+          }
+          localStorage.setItem('locatSearchObj', JSON.stringify(curSearchArr))
+        } else {
+          let arr = []
+          arr.push({id: 1, word: curSearch, num: 1})
+          localStorage.setItem('locatSearchObj', JSON.stringify(arr))
+        }
+      }
     }
   }
 }
@@ -116,4 +145,6 @@ export default {
         color: #999999
         &:first-child
           margin-left: 26px
+          border-color: #d29e61
+          color: #d29e61
 </style>
