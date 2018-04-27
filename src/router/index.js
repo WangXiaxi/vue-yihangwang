@@ -9,6 +9,7 @@ import SearchList from 'components/search-list/search-list'
 import NewsList from 'components/news-list/news-list'
 import NewsDetail from 'components/news-detail/news-detail'
 import SpecialZone from 'components/special-zone/special-zone'
+import Product from 'components/product/product'
 
 Vue.use(Router)
 
@@ -92,6 +93,14 @@ export default new Router({
       path: '/site/index/special-zone',
       name: 'SpecialZone',
       component: SpecialZone,
+      meta: {
+        noShowFooter: true
+      }
+    },
+    { // 商品页面
+      path: '/site/index/product',
+      name: 'Product',
+      component: Product,
       meta: {
         noShowFooter: true
       }

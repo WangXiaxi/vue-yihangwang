@@ -10,11 +10,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { URL } from '@/api/config'
 export default {
   methods: {
     addElHref (href) {
-      return `${URL}${href}`
+      return `${href}`
     }
   }
 }

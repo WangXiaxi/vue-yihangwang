@@ -56,7 +56,7 @@ export function getNewsList (data) {
   })
 }
 
-/** 获取新闻列表详细 **/
+/** 获取新闻详细 **/
 export function getNewsDetail (id) {
   const url = URL + '/ajaxapi/getNewsDetail'
   const data = {
@@ -69,9 +69,19 @@ export function getNewsDetail (id) {
   })
 }
 
-/** 商品查询 **/
+/** 获取特惠专区 **/
 export function discountArea (data) {
   const url = URL + '/ajaxapi/discountArea'
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
+}
+
+/** 获取商品详细 **/
+export function getGoodsDetail (data) {
+  const url = URL + '/ajaxapi/getGoodsDetail'
   return axios.get(url, {
     params: data
   }).then((res) => {
