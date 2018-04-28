@@ -7,10 +7,11 @@ import 'common/stylus/index.styl'
 import 'lib-flexible/flexible.js'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
-import { Lazyload, Indicator, Toast, InfiniteScroll } from 'mint-ui'
+import { Lazyload, Indicator, Toast, InfiniteScroll, Popup } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 
 Vue.use(InfiniteScroll)
+Vue.component(Popup.name, Popup)
 Vue.prototype.loading = Indicator
 Vue.prototype.toast = Toast
 Vue.use(Lazyload)

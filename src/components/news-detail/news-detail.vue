@@ -8,7 +8,7 @@
       <div class="time">
         发布时间：{{articeObj.create_time}}
       </div>
-      <div class="content" v-html="articeObj.content">
+      <div class="content article_detail" v-html="articeObj.content">
       </div>
     </div>
   </div>
@@ -67,20 +67,4 @@ export default {
       margin-bottom: 12px
       &:after
         line-scale()
-</style>
-<style lang="stylus" rel="stylesheet/stylus">
-.news-detail
-  .content
-    iframe
-      width: 100%
-      height: 230px
-    *
-      line-height: 1.7 !important
-      font-size: 16px !important
-      word-wrap:break-word
-      word-break:break-all
-    strong
-      font-weight: 500
-    img
-      width: 100% !important
 </style>

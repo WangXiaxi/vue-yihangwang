@@ -33,3 +33,16 @@ export function compare (property, sort) {
     }
   }
 }
+
+// echo 转 arr
+export function evalArr (data) {
+  let dataArr = []
+  if (data) {
+    let dataObj = JSON.parse(data)
+    for (let k in dataObj) {
+      dataObj[k].value = dataObj[k].value.split(',')
+      dataArr.push(dataObj[k])
+    }
+  }
+  return dataArr
+}
