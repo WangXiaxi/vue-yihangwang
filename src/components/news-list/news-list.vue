@@ -41,7 +41,7 @@ export default {
     getNewsList(this.queryData).then((res) => {
       if (res.code === 1) {
         this.newsList = res.data
-        if (res.data < 10) {
+        if (res.data.length < 10) {
           this.load = true
           this.loadType = 2
         } else {
@@ -65,7 +65,6 @@ export default {
       this.load = true
       this.queryData.page = this.queryData.page + 1
       getNewsList(this.queryData).then((res) => {
-        console.log(res)
         if (res.code === 1) {
           setTimeout(() => {
             this.newsList = this.newsList.concat(res.data)

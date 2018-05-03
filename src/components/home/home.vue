@@ -54,14 +54,14 @@
       <div class="hot-swiper" v-if="newgoodsRows.length>0">
         <swiper :options="swiperOptionHot" ref="hotSwiper">
           <swiper-slide v-for="(item, index) in newgoodsRows" :key="index">
-            <a class="hot-item" :href="`/site/products/id/${item.id}`">
+            <router-link class="hot-item" :to="`/site/index/product?id=${item.id}`">
               <img :src="imgHandle(item.img, '@_@w@_@200@_@h@_@200')">
               <div class="info">
                 <p class="tit">{{item.name}}</p>
                 <div class="price"><span class="tip">￥</span><span class="money">{{item.price}}</span></div>
                 <div class="sell-num">库存{{item.store_nums}}</div>
               </div>
-            </a>
+            </router-link>
           </swiper-slide>
         </swiper>
       </div>
@@ -75,7 +75,7 @@
       <div class="pick-swiper">
         <swiper :options="swiperOptionPick" ref="pickSwiper">
           <swiper-slide v-for="(item, index) in optionHot" :key="index">
-            <a :href="`/site/products/id/${item.id}`" class="item-pick">
+            <router-link :to="`/site/index/product?id=${item.id}`" class="item-pick">
               <h3>
                 <span class="tit">{{item.name}}</span>
                 <span class="price"><span>￥</span>{{item.price.split(".")[0]}}.<span>{{item.price.split(".")[1]}}</span></span>
@@ -84,7 +84,7 @@
                 </div>
               </h3>
               <img :src="imgHandle(item.img, '@_@w@_@200@_@h@_@200')">
-            </a>
+            </router-link>
           </swiper-slide>
         </swiper>
       </div>
@@ -100,7 +100,7 @@
         </router-link>
         <ul class="floor-goods">
           <li class="good-item" v-for="(items, indexs) in item.children" :key="indexs">
-            <a :href="`/site/products/id/${items.id}`">
+            <router-link :to="`/site/index/product?id=${items.id}`">
               <h2 class="tit">{{items.name}}</h2>
               <p class="des">{{item.cat_name}}</p>
               <div class="bot-part">
@@ -116,7 +116,7 @@
                   <img v-lazy="imgHandle(items.img, '@_@w@_@200@_@h@_@200')" />
                 </div>
               </div>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -166,7 +166,6 @@ export default {
   },
   created () {
     this.loading.open({
-      text: '数据加载...',
       spinnerType: 'triple-bounce'
     })
     getHome().then((res) => {

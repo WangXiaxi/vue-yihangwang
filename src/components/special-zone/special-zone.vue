@@ -73,7 +73,6 @@ export default {
     },
     createFirst () {
       this.loading.open({
-        text: '数据加载...',
         spinnerType: 'triple-bounce'
       })
       this.queryData = Object.assign({}, this.queryData, this.$route.query)

@@ -43,7 +43,6 @@ export default {
   },
   created () {
     this.loading.open({
-      text: '数据加载...',
       spinnerType: 'triple-bounce'
     })
     getProSitemap().then((res) => {

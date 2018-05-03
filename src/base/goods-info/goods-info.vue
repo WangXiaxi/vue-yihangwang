@@ -1,5 +1,5 @@
 <template>
-  <a :href="`/site/products/id/${goodInfo.id}`" class="goods-info">
+  <router-link :to="`/site/index/product?id=${goodInfo.id}`" class="goods-info">
     <div class="img-box">
       <img v-lazy="imgHandle(goodInfo.img, '@_@w@_@200@_@h@_@200')">
     </div>
@@ -8,7 +8,7 @@
       <div class="price"><span class="tip">￥</span><span class="money">{{goodInfo.sell_price.split(".")[0]}}.</span><span class="tip">{{goodInfo.sell_price.split(".")[1]}}</span></div>
       <div class="sell-num">库存{{goodInfo.store_nums}}</div>
     </div>
-  </a>
+  </router-link>
 </template>
 
 <script type="text/ecmascript-6">

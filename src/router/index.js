@@ -10,7 +10,7 @@ import NewsList from 'components/news-list/news-list'
 import NewsDetail from 'components/news-detail/news-detail'
 import SpecialZone from 'components/special-zone/special-zone'
 import Product from 'components/product/product'
-
+import Comment from 'components/comment/comment'
 Vue.use(Router)
 
 export default new Router({
@@ -101,6 +101,14 @@ export default new Router({
       path: '/site/index/product',
       name: 'Product',
       component: Product,
+      meta: {
+        noShowFooter: true
+      }
+    },
+    { // 商品评价
+      path: '/site/index/comment',
+      name: 'Comment',
+      component: Comment,
       meta: {
         noShowFooter: true
       }

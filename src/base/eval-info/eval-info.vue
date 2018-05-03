@@ -2,23 +2,29 @@
   <div class="eval-info">
     <div class="user-info">
       <img class="user-img" src="https://img.alicdn.com/tps/TB1l6dkOXXXXXXEXVXXXXXXXXXX-210-210.png" />
-      <div class="user-name">小星哈哈哈！</div>
-      <div class="user-level"></div>
+      <div class="user-name" v-if="evalData.username">{{evalData.username.slice(0, 2)}}******{{evalData.username.charAt(evalData.username.length-1)}}</div>
+      <div class="user-level" v-if="evalData.group_id === '3'"></div>
     </div>
     <div class="user-eval">
-      按照图册买了一套，超级超级好评。基本款但是无论颜色还是款式都很喜欢，设计十分合理。橄榄色上衣很显气质，剪裁合理，穿上很好看。窄裙布料很舒服，我胯宽有点显，要努力减肥，瘦下来穿着一身会更加好看。总之，无比推荐图上的一套穿搭，为优衣库打call
+      {{evalData.contents}}
     </div>
     <div class="order-info">
-      2018-04-20 颜色分类:11 粉红色;尺码:160/84A/M
+      {{evalData.comment_time}}
     </div>
-    <div class="seller-re">
-      <span>商家回复：</span>你个大坑或不买拉到，不要影响我写代码
+    <div class="seller-re" v-if="evalData.recontents">
+      <span>商家回复：</span>{{evalData.recontents}}
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 export default {
+  props: {
+    evalData: {
+      type: Object,
+      dafault: {}
+    }
+  }
 }
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">
@@ -65,7 +71,6 @@ export default {
     font-size: 13px
     line-height: 17px
     text-align: justify
-    text-indent: 2em
   .order-info
     font-size: 10px
     padding-top: 8px
