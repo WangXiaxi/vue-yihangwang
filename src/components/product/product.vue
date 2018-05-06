@@ -666,7 +666,7 @@ export default {
         overflow-y: scroll
         .format-item
           position: relative
-          padding: 14px 0
+          padding: 14px 0 8px
           &.format-item-big
             padding: 10px 0
             .name
@@ -719,6 +719,7 @@ export default {
               border-radius: 3px
               color: #555
               margin-right: 10px
+              margin-bottom: 8px
               &.on
                 color: #FFFFFF
                 background: #ff0036

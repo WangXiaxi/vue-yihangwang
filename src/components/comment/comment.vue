@@ -84,7 +84,6 @@ export default {
 .comment
   background: #ffffff
   padding-top: 44px
-  padding-bottom: 59px
   .list
     padding: 0 12px
     .eval-info

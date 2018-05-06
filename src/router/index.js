@@ -11,6 +11,7 @@ import NewsDetail from 'components/news-detail/news-detail'
 import SpecialZone from 'components/special-zone/special-zone'
 import Product from 'components/product/product'
 import Comment from 'components/comment/comment'
+import Cart from 'components/cart/cart'
 Vue.use(Router)
 
 export default new Router({
@@ -109,6 +110,14 @@ export default new Router({
       path: '/site/index/comment',
       name: 'Comment',
       component: Comment,
+      meta: {
+        noShowFooter: true
+      }
+    },
+    { // 购物车
+      path: '/site/index/cart',
+      name: 'Cart',
+      component: Cart,
       meta: {
         noShowFooter: true
       }

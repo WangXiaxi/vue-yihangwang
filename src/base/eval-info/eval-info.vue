@@ -1,7 +1,7 @@
 <template>
   <div class="eval-info">
     <div class="user-info">
-      <img class="user-img" src="https://img.alicdn.com/tps/TB1l6dkOXXXXXXEXVXXXXXXXXXX-210-210.png" />
+      <img class="user-img" :src="showHeaderImg" />
       <div class="user-name" v-if="evalData.username">{{evalData.username.slice(0, 2)}}******{{evalData.username.charAt(evalData.username.length-1)}}</div>
       <div class="user-level" v-if="evalData.group_id === '3'"></div>
     </div>
@@ -18,11 +18,22 @@
 </template>
 
 <script type="text/ecmascript-6">
+import avatar from './user_ico.jpg'
+
 export default {
   props: {
     evalData: {
       type: Object,
       dafault: {}
+    }
+  },
+  computed: {
+    showHeaderImg () {
+      let headIco = this.evalData.head_ico
+      if (!this.evalData.head_ico) {
+        headIco = avatar
+      }
+      return headIco
     }
   }
 }

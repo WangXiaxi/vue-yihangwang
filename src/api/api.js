@@ -136,3 +136,11 @@ export function getCommentList (data) {
     return Promise.resolve(res.data)
   })
 }
+
+/** 获取购物车商品 **/
+export function getCartList () {
+  const url = URL + '/ajaxapi/getCartList'
+  return axios.get(url).then((res) => {
+    return Promise.resolve(res.data)
+  })
+}
