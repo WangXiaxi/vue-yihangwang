@@ -1,3 +1,5 @@
+import minlogo from 'common/images/minlogo.png' // 引入图片
+
 export function sitemapJsonHandle (data) {
   let f = JSON.parse(JSON.stringify(data.top))
   data.second.map((t) => {
@@ -45,4 +47,45 @@ export function evalArr (data) {
     }
   }
   return dataArr
+}
+
+// cart data 操作
+export function cartDataHandle (data) {
+  let newArr = []
+  data.forEach((cur, index) => {
+    if (cur.spec_array) {
+      cur.spec_array = evalArr(cur.spec_array)
+    }
+    let isExist = true // 默认允许添加
+    for (let i = 0; i < newArr.length; i++) {
+      if (Number(newArr[i].brand_id) === Number(cur.brand_id)) {
+        isExist = false
+        newArr[i].children.push(cur)
+        break
+      }
+    }
+    if (isExist) {
+      let brandObj = {}
+      if (cur.brand_id) {
+        brandObj = {
+          brand_id: cur.brand_id,
+          brand_logo: cur.brand_logo,
+          brand_name: cur.brand_name,
+          brand_url: `/site/index/brand-detail?id=${cur.brand_id}`,
+          children: []
+        }
+      } else {
+        brandObj = {
+          brand_id: 0,
+          brand_logo: minlogo,
+          brand_name: '忆杭网自营',
+          brand_url: '/site/index/sitemap',
+          children: []
+        }
+      }
+      brandObj.children[0] = cur
+      newArr.push(brandObj)
+    }
+  })
+  return newArr
 }

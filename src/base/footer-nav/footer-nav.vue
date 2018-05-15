@@ -3,7 +3,7 @@
     <ul>
       <router-link to="/site/index" tag="li" class="nav-1"><i class="nav-1"></i><span>首页</span></router-link>
       <router-link to="/site/index/sitemap" tag="li" class="nav-2"><i class="nav-2"></i><span>分类</span></router-link>
-      <li class="nav-3"><a :href="addElHref('/simple/cart')"><i class="nav-3"></i><span>购物车</span></a></li>
+      <li class="nav-3"><router-link to="/site/index/cart"><i class="nav-3"></i><span>购物车</span></router-link></li>
       <li class="nav-4"><a :href="addElHref('/ucenter/index')"><i class="nav-4"></i><span>我的</span></a></li>
     </ul>
   </div>

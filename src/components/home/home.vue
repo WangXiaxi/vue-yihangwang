@@ -131,8 +131,10 @@
 import { getHome } from '@/api/api.js'
 import { URL } from '@/api/config'
 import { homeFloorJsonHandle } from 'common/js/datahandle'
+import { needMixin } from 'common/js/mixin'
 
 export default {
+  mixins: [needMixin],
   data () {
     return {
       swiperOptionBanner: {

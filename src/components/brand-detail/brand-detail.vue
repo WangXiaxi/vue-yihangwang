@@ -60,7 +60,9 @@ export default {
     }
   },
   mounted () {
-    window.addEventListener('scroll', this.handleScroll)
+    this.$nextTick(() => {
+      window.addEventListener('scroll', this.handleScroll)
+    })
   },
   created () {
     this.createFirst()
@@ -68,7 +70,7 @@ export default {
   methods: {
     handleScroll () {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      let offsetTop = this.$refs.sortZw.offsetTop
+      let offsetTop = this.$refs.sortZw ? this.$refs.sortZw.offsetTop : 0
       this.needFixed = scrollTop > offsetTop ? 1 : 0
     },
     changeState (state) {

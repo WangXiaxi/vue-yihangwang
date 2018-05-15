@@ -144,3 +144,20 @@ export function getCartList () {
     return Promise.resolve(res.data)
   })
 }
+
+/** 购物车删除操作 **/
+export function removeCart (data) {
+  const url = URL + '/simple/removeCart'
+  let goodsId = data.product_id > 0 ? data.product_id : data.goods_id
+  let goodsType = data.product_id > 0 ? 'product' : 'goods'
+  let datas = {
+    goods_id: goodsId,
+    type: goodsType,
+    random: Math.random()
+  }
+  return axios.get(url, {
+    params: datas
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
+}

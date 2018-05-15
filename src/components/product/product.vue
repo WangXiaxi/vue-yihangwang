@@ -10,10 +10,10 @@
         <div :class="{act: navAct === 3}" @click.stop="changeCurAct(3)">详情</div>
       </div>
       <div class="ri">
-        <a href="/simple/cart">
+        <router-link to="/site/index/cart">
           <i class="ico"></i>
           <div class="cart-num" v-if="cartNum > 0">{{cartNum}}</div>
-        </a>
+        </router-link>
       </div>
     </div>
     <div class="good-banner">
@@ -123,8 +123,10 @@ import EvalInfo from 'base/eval-info/eval-info'
 import { URL } from '@/api/config'
 import { getGoodsDetail, actAddFavorite, actChangeSpec, actJoinCart, getShowCart, getCommentList } from '@/api/api.js'
 import { evalArr } from 'common/js/datahandle'
+import { needMixin } from 'common/js/mixin'
 
 export default {
+  mixins: [needMixin],
   components: {
     HeaderPub,
     EvalInfo
@@ -156,7 +158,9 @@ export default {
     this._getAllData()
   },
   mounted () {
-    window.addEventListener('scroll', this.handleScroll)
+    this.$nextTick(() => {
+      window.addEventListener('scroll', this.handleScroll)
+    })
   },
   methods: {
     goBack () {
