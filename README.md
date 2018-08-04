@@ -5,6 +5,9 @@
 ## Build Setup
 
 ``` bash
+# 包含
+采用 vue + mintui + vuex + vue-router + stylus + px2rem 编写的移动端商城项目,主要功能购物车等，线上地址 hz.ehanone.com
+
 # install dependencies
 npm install
 
